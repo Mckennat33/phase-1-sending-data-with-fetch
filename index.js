@@ -1,8 +1,7 @@
-// Add your code here
 
-const userURL = 'http://localhost:3000/users' 
+const userUrl = 'http://localhost:3000/users'
 
-let bodyData = { 
+let data = { 
     name: "Steve", 
     email: "steve@steve.com"
 }
@@ -13,22 +12,22 @@ const postObject = {
         "Content-Type": "application/json",
         "Accept": "application/json"
     },
-    body: JSON.stringify(bodyData)
+    body: JSON.stringify(data)
 }
+
 
 function submitData() {
-    return fetch(userURL, postObject)
-    .then(response => response.json())
-    .then(getID)
-    .catch(errorFunc)
+return fetch(userUrl, postObject)
+.then(response => response.json())
+.then(getId)
+.catch(errorMessage)
 }
 
-const bodyTag = document.querySelector('body')
-
-function getID(object) {
+function getId(object) {   
     document.body.innerHTML = object.id
 }
 
-function errorFunc(error) {
+function errorMessage(error) {
     document.body.innerHTML = error.message
-};
+}
+
